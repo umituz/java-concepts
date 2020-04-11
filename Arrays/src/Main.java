@@ -1,5 +1,7 @@
-public class Main {
-    public static void main(String[] args) {
+public class Main
+{
+    public static void main(String[] args)
+    {
         String[] names = new String[3];
         names[0] = "Ümit";
         names[1] = "UZ";
@@ -14,5 +16,19 @@ public class Main {
         for(String name:names){
             System.out.println(name);
         }
+
+        System.out.println("----------------");
+
+        double[] prices = {1.1,2.2,3.3,4.4,5.5};
+
+        double total = 0;
+
+        for(double price:prices){
+            total += price;
+            System.out.println(price);
+        }
+
+        System.out.println(total);
+
     }
 }
