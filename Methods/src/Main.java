@@ -3,8 +3,9 @@ public class Main {
         findNumber();
         String message = manipulateMessage(" I AM AWESOME");
         showMessage(message);
-        int total = addNumbers(1,1);
-        System.out.println(total);
+        int total = addNumbers(1, 1);
+        int limitlessTotal = addLimitlessNumbers(1, 2,3,4,5,6,7,8,9);
+        System.out.println(limitlessTotal);
     }
 
     public static void findNumber() {
@@ -40,5 +41,13 @@ public class Main {
 
     public static int addNumbers(int number1, int number2) {
         return number1 + number2;
+    }
+
+    public static int addLimitlessNumbers(int... numbers) {
+        int total = 0;
+        for (int number : numbers) {
+            total += number;
+        }
+        return total;
     }
 }
