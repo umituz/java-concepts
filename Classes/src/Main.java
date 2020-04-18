@@ -2,20 +2,26 @@ public class Main
 {
     public static void main(String[] args)
     {
+        referenceType();
+        customer();
+        fourOperations();
+    }
+
+    public static void fourOperations(){
+        FourOperations fourOperations = new FourOperations();
+
+        int result = fourOperations.plus(1,1);
+
+        System.out.println(result);
+    }
+
+    public static void customer(){
         Customer customer = new Customer();
-        Customer customer2 = new Customer();
-
-        customer = customer2;
-
         customer.create();
-        customer2.create();
         customer.store();
         customer.edit();
         customer.update();
         customer.destroy();
-
-
-        referenceType();
     }
 
     public static void referenceType(){
