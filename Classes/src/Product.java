@@ -1,4 +1,14 @@
 public class Product {
+
+    public Product(int id){
+        this.id = id;
+        System.out.println("Constructor worked");
+    }
+
+    public Product(){
+        System.out.println("Constructor worked");
+    }
+
     private int id;
     private String name;
     private String description;

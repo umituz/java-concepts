@@ -7,23 +7,25 @@ public class Main {
     }
 
     public static void product() {
-        Product product = new Product();
-
-        product.setId(1);
-        product.setName("Computer");
-        product.setDescription("Beautiful Computer");
-        product.setPrice(99.99);
-        product.setStockAmount(0);
-
+        Product product = new Product(1);
+//        Product product = new Product();
         System.out.println(product.getId());
-        System.out.println(product.getName());
-        System.out.println(product.getDescription());
-        System.out.println(product.getPrice());
-        System.out.println(product.getStockAmount());
-        System.out.println(product.getCode());
 
-        ProductManager productManager = new ProductManager();
-        productManager.add(product);
+//        product.setId(1);
+//        product.setName("Computer");
+//        product.setDescription("Beautiful Computer");
+//        product.setPrice(99.99);
+//        product.setStockAmount(0);
+//
+//        System.out.println(product.getId());
+//        System.out.println(product.getName());
+//        System.out.println(product.getDescription());
+//        System.out.println(product.getPrice());
+//        System.out.println(product.getStockAmount());
+//        System.out.println(product.getCode());
+//
+//        ProductManager productManager = new ProductManager();
+//        productManager.add(product);
     }
 
     public static void fourOperations() {
