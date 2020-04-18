@@ -1,25 +1,26 @@
 public class Main {
     public static void main(String[] args) {
-        referenceType();
-        customer();
-        fourOperations();
+//        referenceType();
+//        customer();
+//        fourOperations();
         product();
     }
 
     public static void product() {
         Product product = new Product();
 
-        product.id = 1;
-        product.name = "Computer";
-        product.description = "Beautiful Computer";
-        product.price = 99.99;
-        product.stockAmount = 0;
+        product.setId(1);
+        product.setName("Computer");
+        product.setDescription("Beautiful Computer");
+        product.setPrice(99.99);
+        product.setStockAmount(0);
 
-        System.out.println(product.id);
-        System.out.println(product.name);
-        System.out.println(product.description);
-        System.out.println(product.price);
-        System.out.println(product.stockAmount);
+        System.out.println(product.getId());
+        System.out.println(product.getName());
+        System.out.println(product.getDescription());
+        System.out.println(product.getPrice());
+        System.out.println(product.getStockAmount());
+        System.out.println(product.getCode());
 
         ProductManager productManager = new ProductManager();
         productManager.add(product);
