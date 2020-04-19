@@ -2,10 +2,13 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Customer customer = new Customer();
-        Employee employee = new Employee();
+//        Customer customer = new Customer();
+//        Employee employee = new Employee();
+//
+//        CustomerManager customerManager = new CustomerManager();
+//        EmployeeManager employeeManager = new EmployeeManager();
 
-        CustomerManager customerManager = new CustomerManager();
-        EmployeeManager employeeManager = new EmployeeManager();
+        CreditUI creditUI = new CreditUI();
+        creditUI.calculateCredit(new TeacherCreditManager());
     }
 }
