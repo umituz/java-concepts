@@ -1,6 +1,8 @@
 //import ArrayList.ArrayListSample;
 //import ArrayListType.Type;
-import ArrayListClass.ArrayListClass;
+//import ArrayListClass.ArrayListClass;
+
+import HashMap.HashMapSample;
 
 public class Main
 {
@@ -8,7 +10,9 @@ public class Main
     {
 //        ArrayListSample.list();
 //        Type.type();
+//        ArrayListClass.arrayListClass();
 
-        ArrayListClass.arrayListClass();
+        HashMapSample.dictionary();
+
     }
 }
