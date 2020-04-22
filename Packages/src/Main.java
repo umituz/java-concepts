@@ -1,16 +1,26 @@
+import Mathematic.*;
+//import Mathematic.FourOperations;
+//import Mathematic.Logarithm;
+
 import java.util.Scanner;
 
 public class Main
 {
     public static void main(String[] args)
     {
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
+//
+//        System.out.println("Enter your name");
+//
+//        String name = scanner.nextLine();
+//
+//        System.out.println(name);
 
-        System.out.println("Enter your name");
+        FourOperations.plus();
+        FourOperations.minus();
+        FourOperations.dividedBy();
+        FourOperations.times();
 
-        String name = scanner.nextLine();
-
-        System.out.println(name);
-
+        Logarithm.logarithm();
     }
 }
