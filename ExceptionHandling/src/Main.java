@@ -1,4 +1,5 @@
 //import CheckedException.CheckedException;
+import CustomException.BalanceInsufficientException;
 import Throw.AccountManager;
 
 public class Main
@@ -35,7 +36,7 @@ public class Main
 
         try {
             accountManager.withDraw(90);
-        } catch (Exception exception) {
+        } catch (BalanceInsufficientException exception) {
            System.out.println(exception.getMessage());
         }
 
@@ -43,7 +44,7 @@ public class Main
 
         try {
             accountManager.withDraw(20);
-        } catch (Exception exception) {
+        } catch (BalanceInsufficientException exception) {
             System.out.println(exception.getMessage());
         }
 
