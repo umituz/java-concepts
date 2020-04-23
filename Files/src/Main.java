@@ -1,5 +1,7 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main
 {
@@ -7,7 +9,8 @@ public class Main
     {
         String fileName = "C:\\java-concepts\\Files\\src\\student.txt";
 //        createFile(fileName);
-        getFileInfo(fileName);
+//        getFileInfo(fileName);
+        readFile(fileName);
     }
 
     public static void createFile(String fileName)
@@ -36,6 +39,21 @@ public class Main
             System.out.println("File writable : " + file.canWrite());
             System.out.println("File readable : " + file.canRead());
             System.out.println("File size : " + file.length());
+        }
+    }
+
+    public static void readFile(String fileName)
+    {
+        File file = new File(fileName);
+        try {
+            Scanner reader = new Scanner(file);
+            while (reader.hasNextLine()){
+                String line = reader.nextLine();
+                System.out.println(line);
+            }
+            reader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }
