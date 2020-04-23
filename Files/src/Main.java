@@ -1,6 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main
@@ -10,6 +8,8 @@ public class Main
         String fileName = "C:\\java-concepts\\Files\\src\\student.txt";
 //        createFile(fileName);
 //        getFileInfo(fileName);
+        readFile(fileName);
+        writeFile(fileName);
         readFile(fileName);
     }
 
@@ -53,6 +53,20 @@ public class Main
             }
             reader.close();
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void writeFile(String fileName)
+    {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName,true));
+//            writer.write("\nTester");
+            writer.newLine();
+            writer.write("Tester");
+            System.out.println("Wrote");
+            writer.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
