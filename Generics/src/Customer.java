@@ -1,4 +1,4 @@
-public class Customer
+public class Customer implements IEntity
 {
     int id;
     String name;
