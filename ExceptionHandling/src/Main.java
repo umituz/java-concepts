@@ -1,4 +1,5 @@
-import CheckedException.CheckedException;
+//import CheckedException.CheckedException;
+import Throw.AccountManager;
 
 public class Main
 {
@@ -18,10 +19,35 @@ public class Main
 //            System.out.println("Done");
 //        }
 
-        try{
-            CheckedException.readFile();
-        }catch (Exception exception){
-            System.out.println(exception);
+//        try{
+//            CheckedException.readFile();
+//        }catch (Exception exception){
+//            System.out.println(exception);
+//        }
+
+        AccountManager accountManager = new AccountManager();
+
+        System.out.println("Balance : " + accountManager.getBalance());
+
+        accountManager.deposit(100);
+
+        System.out.println("Balance : " + accountManager.getBalance());
+
+        try {
+            accountManager.withDraw(90);
+        } catch (Exception exception) {
+           System.out.println(exception.getMessage());
         }
+
+        System.out.println("Balance : " + accountManager.getBalance());
+
+        try {
+            accountManager.withDraw(20);
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
+
+        System.out.println("Balance : " + accountManager.getBalance());
+
     }
 }
