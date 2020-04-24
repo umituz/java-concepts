@@ -1,12 +1,15 @@
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class Main
 {
     public static void main(String[] args) throws SQLException
+    {
+        create();
+//        read();
+    }
+
+    public static void read() throws SQLException
     {
         Connection connection = null;
         DatabaseHelper databaseHelper = new DatabaseHelper();
@@ -28,6 +31,29 @@ public class Main
         } catch (SQLException exception) {
             databaseHelper.showErrorMessage(exception);
         } finally {
+            connection.close();
+        }
+    }
+    public static void create() throws SQLException
+    {
+        Connection connection = null;
+        DatabaseHelper databaseHelper = new DatabaseHelper();
+        PreparedStatement statement = null;
+        try {
+            connection = databaseHelper.getConnection();
+            String sqlQuery = "insert into city (name,countryCode,district,population) values(?,?,?,?)";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setString(1,"Muha");
+            statement.setString(2,"TUR");
+            statement.setString(3,"Muha");
+            statement.setInt(4,5000);
+            int result = statement.executeUpdate();
+            System.out.println("Result : " + result);
+
+        } catch (SQLException exception) {
+            databaseHelper.showErrorMessage(exception);
+        } finally {
+            statement.close();
             connection.close();
         }
     }
