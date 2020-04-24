@@ -7,7 +7,8 @@ public class Main
     {
 //        create();
 //        read();
-        update();
+//        update();
+        delete();
     }
 
     public static void read() throws SQLException
@@ -67,7 +68,30 @@ public class Main
         PreparedStatement statement = null;
         try {
             connection = databaseHelper.getConnection();
-            String sqlQuery = "update city set population = 100000, district = 'Turkey' where id = ?";
+            String sqlQuery = "update city set population = ?, district = ? where id = ?";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setInt(1,9100000);
+            statement.setString(2,"Turkey");
+            statement.setInt(3,4081);
+            int result = statement.executeUpdate();
+            System.out.println("Result : " + result);
+
+        } catch (SQLException exception) {
+            databaseHelper.showErrorMessage(exception);
+        } finally {
+            statement.close();
+            connection.close();
+        }
+    }
+
+    public static void delete() throws SQLException
+    {
+        Connection connection = null;
+        DatabaseHelper databaseHelper = new DatabaseHelper();
+        PreparedStatement statement = null;
+        try {
+            connection = databaseHelper.getConnection();
+            String sqlQuery = "delete from city where id = ?";
             statement = connection.prepareStatement(sqlQuery);
             statement.setInt(1,4081);
             int result = statement.executeUpdate();
