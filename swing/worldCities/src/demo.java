@@ -12,8 +12,14 @@ public class demo extends javax.swing.JFrame {
     
     public demo() 
     {
-        initComponents();
+        initComponents();        
+        populateTable();
+    }
+    
+    public void populateTable()
+    {
         model = (DefaultTableModel) tblCities.getModel(); 
+        model.setRowCount(0);
         try {
             ArrayList<City> cities = getCities();
             for(City city:cities){
@@ -29,7 +35,6 @@ public class demo extends javax.swing.JFrame {
         } catch (SQLException ex) {
             // Logger.getLogger(demo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     
     public ArrayList<City> getCities() throws SQLException
@@ -74,6 +79,15 @@ public class demo extends javax.swing.JFrame {
         tblCities = new javax.swing.JTable();
         txtSearch = new javax.swing.JTextField();
         lblSearch = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        lblCountryCode = new javax.swing.JLabel();
+        lblDistrict = new javax.swing.JLabel();
+        lblPopulation = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        txtCountryCode = new javax.swing.JTextField();
+        txtDistrict = new javax.swing.JTextField();
+        txtPopulation = new javax.swing.JTextField();
+        btnSave = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,30 +137,107 @@ public class demo extends javax.swing.JFrame {
         lblSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblSearch.setText("Search : ");
 
+        lblName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblName.setText("City Name");
+
+        lblCountryCode.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblCountryCode.setText("Country Code");
+
+        lblDistrict.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblDistrict.setText("District");
+
+        lblPopulation.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPopulation.setText("Population");
+
+        txtName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        txtCountryCode.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtCountryCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCountryCodeActionPerformed(evt);
+            }
+        });
+
+        txtDistrict.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        txtPopulation.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        btnSave.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(66, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCountryCode, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(5, 5, 5)
+                                        .addComponent(txtCountryCode, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(114, 114, 114)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblDistrict, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblPopulation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtDistrict, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                    .addComponent(txtPopulation)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(47, 47, 47)
+                                    .addComponent(txtSearch))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(321, 321, 321)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDistrict)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDistrict, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPopulation, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPopulation, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCountryCode, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCountryCode, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(20, 20, 20)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -162,6 +253,37 @@ public class demo extends javax.swing.JFrame {
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtCountryCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCountryCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCountryCodeActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        Connection connection = null;
+        DatabaseHelper databaseHelper = new DatabaseHelper();
+        PreparedStatement statement = null;
+         try {
+            connection = databaseHelper.getConnection();
+            String sqlQuery = "insert into city (name,countryCode,district,population) values(?,?,?,?)";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setString(1,txtName.getText());
+            statement.setString(2,txtCountryCode.getText());
+            statement.setString(3,txtDistrict.getText());
+            statement.setInt(4,Integer.valueOf(txtPopulation.getText()));
+            int result = statement.executeUpdate();
+            System.out.println("Result : " + result);
+            populateTable();
+        } catch (SQLException exception) {
+            databaseHelper.showErrorMessage(exception);
+        } finally {
+            try {
+                statement.close();
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(demo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,9 +321,18 @@ public class demo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSave;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblCountryCode;
+    private javax.swing.JLabel lblDistrict;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPopulation;
     private javax.swing.JLabel lblSearch;
     private javax.swing.JTable tblCities;
+    private javax.swing.JTextField txtCountryCode;
+    private javax.swing.JTextField txtDistrict;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPopulation;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
