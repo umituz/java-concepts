@@ -1,17 +1,62 @@
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 public class demo extends javax.swing.JFrame {
 
-    /**
-     * Creates new form demo
-     */
-    public demo() {
+    DefaultTableModel model;
+    
+    public demo() 
+    {
         initComponents();
+        model = (DefaultTableModel) tblCities.getModel(); 
+        try {
+            ArrayList<City> cities = getCities();
+            for(City city:cities){
+                Object[] row = {
+                    city.getId(),
+                    city.getName(),
+                    city.getCountryCode(),
+                    city.getDistrict(),
+                    city.getPopulation()
+                };
+                model.addRow(row);
+            }
+        } catch (SQLException ex) {
+            // Logger.getLogger(demo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
-    public ArrayList<City> getCitites() throws SQLException
+    public ArrayList<City> getCities() throws SQLException
     {
-        
+        Connection connection = null;
+        DatabaseHelper databaseHelper = new DatabaseHelper();
+        Statement statement = null;
+        ResultSet resultSet = null;
+         ArrayList<City> cities = null;
+        try {
+            connection = databaseHelper.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("select id,name,countryCode,district,population from city");
+            cities = new ArrayList<City>();
+            while (resultSet.next()){
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String countryCode = resultSet.getString("countryCode");
+                String district = resultSet.getString("district");
+                int population = resultSet.getInt("population");
+                cities.add(new City(id,name,countryCode,district,population));
+            }
+            System.out.println(cities.size());
+        } catch (SQLException exception) {
+            databaseHelper.showErrorMessage(exception);
+        } finally {
+            connection.close();
+        }
+        return cities;
     }
 
     /**

@@ -44,7 +44,7 @@ public class Main
         PreparedStatement statement = null;
         try {
             connection = databaseHelper.getConnection();
-            String sqlQuery = "insert into city (name,countryCode,district,population) values(?,?,?,?)";
+            String sqlQuery = "insert int o city (name,countryCode,district,population) values(?,?,?,?)";
             statement = connection.prepareStatement(sqlQuery);
             statement.setString(1,"Muha");
             statement.setString(2,"TUR");
