@@ -7,7 +7,9 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="database" class="springIntro.MySqlCustomerDal"></bean>
+	<bean id="database" class="springIntro.OracleCustomerDal">
+		<property name="connectionString" value="oracle string value" />
+	</bean>
 	<bean id="service" class="springIntro.CustomerManager">
 		<!-- <constructor-arg ref="database" />  -->
 		<property name="customerDal" ref="database" />
