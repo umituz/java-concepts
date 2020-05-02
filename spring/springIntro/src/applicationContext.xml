@@ -7,8 +7,9 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+	<context:property-placeholder location="classpath:values.properties" />
 	<bean id="database" class="springIntro.OracleCustomerDal">
-		<property name="connectionString" value="oracle string value" />
+		<property name="connectionString" value="${database.connectionString}" />
 	</bean>
 	<bean id="service" class="springIntro.CustomerManager">
 		<!-- <constructor-arg ref="database" />  -->
