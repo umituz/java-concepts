@@ -1,4 +1,5 @@
 public class Main {
+
     public static void main(String[] args) {
         boolean type = true;
         char test = 'A';
@@ -8,5 +9,7 @@ public class Main {
         long number4 = 999999999;
         float number6 = 4850;
         double number5 = 45.90;
+        System.out.println(type);
     }
+
 }
