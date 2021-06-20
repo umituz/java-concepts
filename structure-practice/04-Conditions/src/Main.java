@@ -1,4 +1,5 @@
 public class Main {
+
     public static void main(String[] args) {
         // write your code here
         int number = 20;
@@ -10,4 +11,5 @@ public class Main {
             System.out.println("Number is not smaller than 20");
         }
     }
+
 }
